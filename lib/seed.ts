@@ -1,6 +1,6 @@
 import { ID } from "react-native-appwrite";
 import { appwriteConfig, databases, storage } from "./appwrite";
-import dummyData from "./data";
+import { dummyData } from "./data";
 
 interface Category {
   name: string;
@@ -35,26 +35,17 @@ interface DummyData {
 const data = dummyData as DummyData;
 
 async function clearAll(collectionId: string): Promise<void> {
-  const list = await databases.listDocuments(
-    appwriteConfig.databaseId,
-    collectionId
-  );
+  const list = await databases.listDocuments(appwriteConfig.databaseId, collectionId);
 
   await Promise.all(
-    list.documents.map((doc) =>
-      databases.deleteDocument(appwriteConfig.databaseId, collectionId, doc.$id)
-    )
+    list.documents.map((doc) => databases.deleteDocument(appwriteConfig.databaseId, collectionId, doc.$id)),
   );
 }
 
 async function clearStorage(): Promise<void> {
   const list = await storage.listFiles(appwriteConfig.bucketId);
 
-  await Promise.all(
-    list.files.map((file) =>
-      storage.deleteFile(appwriteConfig.bucketId, file.$id)
-    )
-  );
+  await Promise.all(list.files.map((file) => storage.deleteFile(appwriteConfig.bucketId, file.$id)));
 }
 
 async function uploadImageToStorage(imageUrl: string) {
@@ -68,11 +59,7 @@ async function uploadImageToStorage(imageUrl: string) {
     uri: imageUrl,
   };
 
-  const file = await storage.createFile(
-    appwriteConfig.bucketId,
-    ID.unique(),
-    fileObj
-  );
+  const file = await storage.createFile(appwriteConfig.bucketId, ID.unique(), fileObj);
 
   return storage.getFileViewURL(appwriteConfig.bucketId, file.$id);
 }
@@ -92,7 +79,7 @@ async function seed(): Promise<void> {
       appwriteConfig.databaseId,
       appwriteConfig.categoriesCollectionId,
       ID.unique(),
-      cat
+      cat,
     );
     categoryMap[cat.name] = doc.$id;
   }
@@ -108,7 +95,7 @@ async function seed(): Promise<void> {
         name: cus.name,
         price: cus.price,
         type: cus.type,
-      }
+      },
     );
     customizationMap[cus.name] = doc.$id;
   }
@@ -131,7 +118,7 @@ async function seed(): Promise<void> {
         calories: item.calories,
         protein: item.protein,
         categories: categoryMap[item.category_name],
-      }
+      },
     );
 
     menuMap[item.name] = doc.$id;
@@ -145,7 +132,7 @@ async function seed(): Promise<void> {
         {
           menu: doc.$id,
           customizations: customizationMap[cusName],
-        }
+        },
       );
     }
   }

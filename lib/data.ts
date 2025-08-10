@@ -1,4 +1,4 @@
-const dummyData = {
+export const dummyData = {
   categories: [
     { name: "Burgers", description: "Juicy grilled burgers" },
     { name: "Pizzas", description: "Oven-baked cheesy pizzas" },
@@ -55,13 +55,7 @@ const dummyData = {
       calories: 700,
       protein: 30,
       category_name: "Pizzas",
-      customizations: [
-        "Extra Cheese",
-        "Jalapeños",
-        "Garlic Bread",
-        "Coke",
-        "Olives",
-      ],
+      customizations: ["Extra Cheese", "Jalapeños", "Garlic Bread", "Coke", "Olives"],
     },
     {
       name: "Bean Burrito",
@@ -121,13 +115,7 @@ const dummyData = {
       calories: 720,
       protein: 35,
       category_name: "Burgers",
-      customizations: [
-        "Extra Cheese",
-        "Onions",
-        "Fries",
-        "Coke",
-        "Chicken Nuggets",
-      ],
+      customizations: ["Extra Cheese", "Onions", "Fries", "Coke", "Chicken Nuggets"],
     },
     {
       name: "Paneer Tikka Wrap",
@@ -163,13 +151,7 @@ const dummyData = {
       calories: 540,
       protein: 26,
       category_name: "Sandwiches",
-      customizations: [
-        "Jalapeños",
-        "Onions",
-        "Fries",
-        "Coke",
-        "Choco Lava Cake",
-      ],
+      customizations: ["Jalapeños", "Onions", "Fries", "Coke", "Choco Lava Cake"],
     },
     {
       name: "Classic Margherita Pizza",
@@ -221,5 +203,3 @@ const dummyData = {
     },
   ],
 };
-
-export default dummyData;
