@@ -46,7 +46,7 @@ const useAppwrite = <T, P extends Record<string, string | number>>({
     if (!skip) {
       fetchData(params);
     }
-  }, []);
+  }, [fetchData, params, skip]);
 
   const refetch = async (newParams?: P) => await fetchData(newParams!);
 

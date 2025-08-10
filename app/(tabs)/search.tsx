@@ -19,9 +19,8 @@ export default function Search() {
   const { data: categories } = useAppwrite({ fn: getCategories });
 
   useEffect(() => {
-    console.log("render");
     refetch({ category, query, limit: 6 });
-  }, [category, query]);
+  }, [category, query, refetch]);
 
   return (
     <SafeAreaView className="bg-white h-full">
